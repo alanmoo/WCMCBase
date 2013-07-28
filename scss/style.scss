@@ -1,0 +1,26 @@
+/**
+ *
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+@import "bourbon"; //Import Bourbon Library
+@import "variables";
+@import "mixins";
+@import "base"; /* Import Sass mixins, variables */
+
+@import "global_header";
+@import "navigation";
+@import "footer";
+
+/* Layout rules */
+@import "layout";
+
+/* Module rules */
+@import "components";
+
+/* Global state rules */
+@import "states";
+
+@import "theme";

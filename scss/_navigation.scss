@@ -1,0 +1,385 @@
+/* =============================================================================
+   Site Brand
+   ========================================================================== */
+
+.site-branding{
+  position: relative;
+  margin: 0 $mobile-page-padding;
+  h1{
+    @include inline-block;
+    font-size: 1.4em;
+    font-weight: bold;
+    font-family: "franklin-gothic-urw", Helvetica, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+    width: 80%;
+    padding: 0;
+    &>a:hover{text-decoration: none;}
+    @include breakpoint($bp1){
+      margin-left: 20px;
+      font-size: 2.8em;
+      width: 100%;
+    }
+    .dept-of{
+      font-size: .75em;
+      clear: both;
+      text-align: left;
+    }
+    @include breakpoint($bp2){
+      margin: 0;
+    }
+  }
+  @include breakpoint($bp2){
+    padding: 1em 0;
+    position: absolute;
+  }
+}
+
+.menu-button{
+  font-size: 2.5em;
+  @include inline-block;
+  position: relative;
+  left: .5em;
+  line-height: 1;
+  margin-top: .25em;
+  padding: .25em .25em .5em;
+  cursor: pointer;
+  @include transition(all .25s 0s);
+  @include breakpoint($bp1){
+    display: none;
+  }
+  &.is-expanded{
+    @include transition(all .5s .25s);
+  }
+}
+.menu{
+  @extend .clearfix;
+}
+
+#top-nav{
+  padding: 1em;
+  display: none;
+  clear: both;
+  line-height: 40px;
+  @include breakpoint($bp1){
+    display: block;
+    padding: 0;
+  }
+  .no-js &{
+    display: block;
+  }
+}
+
+#primary-nav{
+  display: none;
+  font-size: 1.8em;
+  @extend .clearfix;
+  .menu{
+    max-width: $bp2;
+  }
+  @include breakpoint($bp1){
+    display: block;
+    float: none;
+    border-bottom: 1px solid;
+    .level-1{
+      float: left;
+      list-style: none;
+      margin: 0;
+      padding: 0 1em;
+      width: 25%;
+      text-align: center;
+      @include box-sizingIEtoo(border-box);
+      @include transition(all .5s);
+      position: relative;
+      &:after{
+        @include transition(all .5s);
+        @include triangle(20px, 10px, down, transparent);
+        position: absolute;
+        bottom: -10px;
+        left: 5%;
+      }
+      >.active-trail{
+        background: transparent;
+        @include transition(all .5s);
+      }
+    }
+    .expand-menu{
+      display: none;
+    }
+  }
+
+}
+
+#drawer-nav{
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  .menu{
+    max-width: 960px;
+  }
+  li{
+    // display: none;
+    margin: 0;
+    padding: 10px 0;
+    @include breakpoint($bp1){
+      margin: 0 0 10px;
+      padding: 0;
+    }
+  }
+  @include breakpoint($bp1){
+    clear: both;
+    margin: 0;
+    font-size: 2em;
+    .menu{
+      padding: 0 10px;
+    }
+    .expand-menu{
+      display: none;
+    }
+  }
+  .level-1{
+    //May need to reimplement clearfix for browsers that don't support columns
+    display: block;
+    font-size: 1.5em;
+    border-bottom: 1px solid;
+    &.last{border: none; padding-bottom: 0;}
+    width: 100%;
+    clear: both;
+    &>a{
+      // font-size: 1.2em;
+    }
+    >.menu{
+      display: none;
+      .no-js &{
+        display: block;
+      }
+      padding-left: 2.5em;
+      margin: 0 $mobile-page-padding*-1;
+    }
+    @include breakpoint($bp1){
+      @include clearfix;
+      display: none;
+      border-bottom: none;
+      padding-top: .25em;
+      >.menu{
+        display: block;
+        border-top: 1px solid;
+        padding-left: 10px;
+        padding-top: .5em;
+        margin: .3em 0 0;
+        width: 100%;
+        @include box-sizing(border-box);
+      }
+    }
+  }
+
+  .level-2{
+    margin-left: 0;
+    font-size: .9em;
+    line-height: 1.5;
+    @include breakpoint($bp1){
+      // @include box-sizing(border-box);
+      // float: left;
+      font-size: .6em;
+      margin:0;
+      padding-bottom: 10px;
+    }
+    >.menu{
+      display: none;
+      @include breakpoint($bp1){
+        display: block;
+        margin-top: .25em;
+      }
+    }
+  }
+  .level-3{
+    @include breakpoint($bp1){
+      list-style-type: disc;
+      font-size: .8em;
+      margin-left: 1em;
+      font-weight: 100;
+    }
+  }
+}
+
+
+
+#active-second-level-nav{
+  //hide on mobile
+  display: none;
+
+  @include breakpoint($bp1){
+    font-size: 1.4em;
+    display: block;
+    text-align: center;
+    .level-2:after{
+        @include transition(all .5s);
+        content: '';
+        width: 0;
+        display: block;
+        margin: 0 auto;
+        border-bottom: 1px solid;
+        opacity: 0;
+      }
+    .last:after{
+        border-bottom: none;
+      }
+    .is-expanded .level-2:after{
+      opacity: 1;
+      width: 30px;
+    }
+    .active-trail>a{
+        background-position-x: 100%;
+        padding: 0 25px;
+        background-position-y: middle;
+    }
+    .level-2{
+      display: none;
+      text-align: center;
+      margin: 0;
+      .no-js &{
+        display: list-item;
+      }
+      &.active, &.active-trail{
+        display: list-item;
+      }
+    }
+  }
+
+}
+
+#active-third-level-nav{
+  display: none;
+  border-bottom: 1px solid;
+  max-width: 960px;
+  @include breakpoint($bp1){
+    display: block;
+    text-align: justify;
+    margin: 0 auto;
+    height: 40px; //Magic number? Sorry future editor. The <span> for text justification
+    font-size: 1.4em;
+    .menu{
+      text-align: justify;
+      -ms-text-justify: distribute-all-lines;
+      text-justify: distribute-all-lines;
+      max-width: 940px;
+    }
+    .level-3{
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      text-align: left;
+      vertical-align: top;
+      position: relative;
+    }
+    .level-3.active-trail:before{
+      @include triangle(20px, 10px, down, transparent);
+      display: block;
+      position: absolute;
+      left: 50%;
+      margin-left: -13px;
+    }
+  }
+  //IE7 doesn't do CSS triangles properly in this case, and position:relative messes up on slideDown
+  .lt-ie8 & .level-3{position: static;}
+}
+
+.expand-menu{
+  cursor: pointer;
+  float: right;
+  @include inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2em;
+  @include size(25);
+}
+
+/* =============================================================================
+   ~Secondary Navigation
+   ========================================================================== */
+
+#body-nav{
+  margin: 20px -10px;
+  padding: 0 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 35px;
+  position: relative;
+  li{
+    margin: 5px 0;
+    display: none;
+    position: relative;
+    &:first-of-type{
+      display: block;
+      &:after{
+        @include transition(all .5s);
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 11px 9px 0 9px;
+        display: block;
+        position: absolute;
+        content: ' ';
+        top:40%;
+        right: 10px;
+        opacity: 1;
+      }
+    }
+    .no-js &{
+      display: list-item;
+    }
+  }
+  .is-expanded li:after{
+    opacity: 0;
+  }
+  @include breakpoint($bp1){
+    display: none;
+    // float: left;
+    // border: none;
+    // width: 300px;
+    // li{
+    //   display: list-item;
+    //   border-bottom: 1px solid black;
+    //   &:first-of-type{
+    //     background: none;
+    //   }
+    // }
+  }
+  #mobile-sub-nav:after{
+    opacity: 0;
+    @include transition(all .25s);
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 9px 11px 9px;
+    display: block;
+    position: absolute;
+    content: ' ';
+    right: 10px;
+    bottom: 0;
+  }
+  #mobile-sub-nav.is-expanded:after{
+    opacity: 1;
+    @include transition(all .5s .25s);
+  }
+}
+
+/* =============================================================================
+   ~Breadcrumb
+   ========================================================================== */
+
+.breadcrumb {
+  font-size: 1.2em;
+  margin: 1em 0;
+  a{
+    text-decoration: none;
+  }
+}
+
+#second-level-nav .wcmc-button{
+  margin-bottom: 1em;
+  display: none;
+  @include breakpoint($bp1){
+    display: block;
+  }
+}

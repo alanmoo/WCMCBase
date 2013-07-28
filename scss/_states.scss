@@ -1,0 +1,11 @@
+/**
+ *
+ * Adds state-based styling. Global state rules are those that apply only during
+ * certain states of the page and have a JavaScript dependency. For more
+ * information, see https://smacss.com/book/type-state
+ *
+ */
+
+ .is-hidden{
+    display: none;
+ }

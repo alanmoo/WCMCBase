@@ -1,0 +1,114 @@
+@import "../../scss/_variables";
+@import "../../scss/_mixins";
+@import "bourbon/bourbon";
+/* =Three Column
+----------------------------------------------------------*/
+$col1: 72%;
+
+#main {
+  min-height: 400px;
+}
+
+.trigger-slideshow{
+  float: left;
+  margin-right: .25em;
+  text-decoration: none;
+  color: black;
+  &:hover{
+    color: black;
+  }
+}
+  .panel-hero-3col {
+    @include clearfix;
+    position: relative;
+  }
+
+  .panel-hero-3col #hero-image {
+    width: 100%;
+  }
+
+  .panel-hero-3col #main-content {
+    @include box-sizingIEtoo(border-box);
+    @include breakpoint($bp1){
+      width: $col1;
+      float: left;
+      padding-right: 30px;
+      min-height: 40em;
+    }
+  }
+
+  .panel-hero-3col #related-content-sidebar {
+    display: none;
+    @include breakpoint($bp2){
+      width: 220px;
+      margin-left: 20px;
+      float: right;
+      display: block;
+    }
+    .no-js &{
+      display: block;
+    }
+  }
+
+  .panel-hero-3col .information-column{
+    position: -moz-sticky;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1em;
+    @include box-sizingIEtoo(border-box);
+    @include breakpoint($bp1){
+      width: 27%;
+      float: left;
+    }
+  }
+  .panel-hero-3col #information-sidebar {
+    @include breakpoint($bp1 $bp2){
+      font-size: .85em;
+    }
+  }
+
+  #information-sidebar{
+    text-align: center;
+    @include breakpoint($bp1){
+      text-align: left;
+    }
+  }
+
+  #information-sidebar.sticky{
+    @include breakpoint($bp1){
+    position: fixed;
+    top: 1em;
+    }
+  }
+
+  #information-sidebar.bottom{
+    @include breakpoint($bp1){
+      position: absolute;
+      bottom: 0;
+      top: auto;
+    }
+  }
+
+  #related-content-inline{
+    margin-bottom: 2em;
+    @include breakpoint($bp2){
+      display: none;
+    }
+  }
+  #related-content-inline .panel-pane{
+    @include breakpoint($bp1 $bp2){
+      width: 50%;
+      float: left;
+      padding: 0 1em;
+      @include box-sizingIEtoo(border-box);
+      margin-bottom: 2em;
+    }
+  }
+
+.pane-node-field-related-articles{
+  clear: both;
+}
+
+#second-level-nav .wcmc-button{
+  width: $col1;
+}

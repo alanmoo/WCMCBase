@@ -1,0 +1,581 @@
+/**
+ *
+ * WCMC Component Styles
+ *
+ */
+
+@import "base";
+
+/* ============================
+  ~Page Regions
+   ============================*/
+.menu{
+  margin: 0;
+  padding: 0;
+}
+
+nav[role="navigation"] .menu,
+#main,
+.wrap {
+  margin: 0 auto;
+  display: block;
+  float: none;
+}
+
+#page {
+  background: #fff;
+}
+
+#main, .footer-site, .footer-wcmc{
+  max-width: 960px;
+  padding: 0 $mobile-page-padding;
+  margin: 0 auto;
+  clear: both;
+  @include box-sizing(border-box);
+}
+
+/* =============================================================================
+   ~Header
+   ========================================================================== */
+
+   nav a, header a{
+    text-decoration: none;
+   }
+
+   .global-search{
+      height: 31px;
+      width: 100%;
+      font-size: 1.2em;
+      @include transition(all .5s);
+      @include breakpoint($bp1){
+        max-width: 250px;
+      }
+      @include breakpoint($bp2){
+        max-width: 290px;
+      }
+      .lt-ie9 &{
+        max-width: 400px;
+      }
+      span{
+        display: block;
+        overflow: hidden;
+        height: 100%;
+        @include box-sizing(border-box);
+      }
+      select{
+        border: 1px solid black;
+        width: 45%;
+        -webkit-appearance: none;
+        border-radius: 0;
+        background: #fff url(../images/sprites/downarrow_grey@2x.png) no-repeat 93%;
+        .lt-ie9 &{
+          background: #fff;
+          padding: 5px 4px;
+        }
+        background-size: 10px 5px;
+        padding: 7px 4px;
+        margin: 0;
+        float: left;
+        height: 31px;
+        font-size: 1em;
+        @include breakpoint($bp1 $bp2){font-size: .8em;}
+        opacity: 1;
+        @include transition (all .25s);
+        .lt-ie8 &{
+          width: 45%;
+          height: 26px;
+          font-size: 17px;
+        }
+      }
+      .global-search-input{
+        border-left: 0;
+        padding: 4px 0;
+        float: right;
+        line-height: 21px;
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none;
+        @include transition (width .25s);
+        @include box-sizing(border-box);
+        .lt-ie8 &{
+          height: 14px;
+          line-height: 1em;
+          // font-size: 20px;
+        }
+      }
+      .search-button{
+        // @include box-sizingIEtoo(border-box);
+        // @include transition (width .25s ease-in);
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 10%;
+        height: 31px;
+        background-color: #fff;
+        @include retina-image('../images/sprites/search', png);
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        border: 1px solid #000;
+        border-left: none;
+        padding: 0px;
+        float: right;
+        min-width: 10px;
+        border-radius: 0;
+        .lt-ie8 &{
+          height: 24px;
+          width: 9%;
+          text-indent: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          font-size: 0;
+          border-left: 1px solid;
+        }
+      }
+      .is-collapsed &{
+        @include breakpoint($bp2){
+          width: 32px;
+        }
+        .global-search-input{
+          @include breakpoint($bp2){
+            width: 0;
+            border-left: 1px solid;
+            border-right: none;
+          }
+          .lt-ie8 &{
+            border-left: none;
+          }
+        }
+        select{
+          @include breakpoint($bp2){
+            width: 0;
+            padding: 0;
+            background: #fff;
+            border: 0;
+            opacity: 0;
+          }
+        }
+        .search-button{
+          .lt-ie8 &{
+            border-left: 1px solid;
+            height: 26px;
+          }
+          @include breakpoint($bp2){
+            width: 31px;
+          }
+        }
+      }
+   }
+
+/* =============================================================================
+   ~Content
+   ========================================================================== */
+
+  a>img{
+    border-radius: 10px;
+  }
+
+  .main-content p a{
+    text-decoration: underline;
+    color: #333539;
+  }
+
+  figure.hero-image{
+    margin: 0 $mobile-page-padding*-1;
+    @include breakpoint($bp1){
+      margin: 0 auto;
+    }
+  }
+   .hero-image figcaption{
+    margin: 1em $mobile-page-padding;
+    @include breakpoint($bp1){
+      margin: 2.5em 0;
+    }
+   }
+
+  .social-media{
+    h3{
+      display: none;
+      @include breakpoint($bp1){
+        display: block;
+      }
+      padding: 0;
+      margin: 0;
+    }
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    max-width: 250px;
+    margin: 0 auto;
+    @include breakpoint($bp1){
+      padding: 2.2em 0 0;
+    }
+  }
+  .social-links{
+    padding: 0;
+    margin-bottom: 0;
+    >li{
+      @include inline-block;
+      margin-bottom: 2em;
+    }
+  }
+   .wcmc-button{
+    border-radius: 5px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.7em;
+   }
+
+   .icon-button{
+    @extend .wcmc-button;
+    @include size(50px);
+   }
+
+   .wcmc-social-button{
+    @extend .wcmc-button;
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    font-size: 2.5em;
+    margin-right: 20px;
+    &:hover{
+      text-decoration: none;
+    }
+   }
+
+   .wcmc-social-button-facebook{
+    background: none;
+    font-size: 40px;
+    margin-right: 20px;
+    position: relative;
+    top: 8px;
+   }
+
+   .wcmc-call-to-action{
+    &:before{
+      display: inline-block;
+      width: 50px;
+      font-size: 2em;
+      margin-right: .5em;
+      padding-top: .3em;
+      vertical-align: middle;
+      line-height: 41px;
+      font-size: 30px;
+      @extend .wcmc-button;
+      @include breakpoint($bp2){
+        font-size: inherit;
+      }
+    }
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0;
+    @include breakpoint($bp2){
+      font-size: 1em;
+    }
+   }
+
+   .contact-info{
+    p{
+      font-size: 1.4em;
+    }
+    span{
+      display: block;
+      @include breakpoint($bp1 $bp2){
+        margin-bottom: .25em;
+      }
+    }
+   }
+
+   .pane-node-field-related-articles{
+    ul{
+      font-size: 1.4em;
+      line-height: 1.5;
+      padding: 1em;
+    }
+    li{
+      margin-bottom: .25em;
+    }
+   }
+  .pane-bundle-slideshow{
+    margin-bottom: 1.5em;
+    a>img{
+      margin-bottom: 1em;
+    }
+    font-size: 1.4em;
+    @include breakpoint($bp1){
+      font-size: 1.2em;
+    }
+    p{
+      font-size: 1em;
+      display: inline;
+    }
+  }
+
+  .slideshow-images {
+    position: relative;
+  }
+
+  .photo-icon {
+    display: none;
+    width: 105px;
+    height: 46px;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    background: url(../images/sprites/overlay.png) 0 0 no-repeat;
+    text-indent: -9999px;
+
+  }
+
+  .pane-bundle-video{
+    a>img{
+      margin: 0 auto 1em;
+      display: block;
+    }
+  }
+
+  .video {
+    position: relative;
+  }
+
+  .video .playhead {
+    display: none;
+    width: 48px;
+    height: 34px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -17px;
+    margin-left: -24px;
+    .lt-ie9 &{background-color: #000;}
+    background-color: rgba(0,0,0,.75);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    @include box-sizingIEtoo(border-box);
+    padding: 8px 0;
+    @include breakpoint($bp1 $bp2){
+      margin-top: -10%;
+    }
+    transition: background-color .25s;
+  }
+  .video:hover .playhead, .video:focus .playhead{
+    .lt-ie9 &{background-color: red;}
+    background-color: rgba(255, 0, 0, .75);
+  }
+
+  .panel-separator{
+    margin: 2em;
+  }
+
+  .jump-to-top{
+    display: none;
+    $jump-circle-size: 80px;
+    $jump-circle-border: 5px;
+    margin: 2em auto;
+    width: $jump-circle-size;
+    >a{
+      @include transition(opacity .25s);
+      display: table-cell;
+      vertical-align: middle;
+      @include size($jump-circle-size - $jump-circle-border*2);
+      border-radius: 70px;
+      border: $jump-circle-border solid #d8d2c9;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      text-decoration: none;
+      line-height: .7;
+      color: #d8d2c9;
+      opacity: .75;
+      &:hover{
+        text-decoration: none;
+        color: #d8d2c9;
+        opacity: 1;
+      }
+    }
+  }
+
+
+/* =============================================================================
+   ~Footer
+   ========================================================================== */
+
+.nyp-logo {
+  float: right;
+  background-image: url(../images/footer_nyp.gif);
+  height: 19px;
+  width: 232px;
+  text-indent: -9999px;
+}
+
+.my-nyp {
+  @include font-size(1.1);
+  float: right;
+  font-family: Helvetica, Arial, sans-serif;
+  clear: both;
+  margin-top: 10px;
+}
+
+.cornell-copyright {
+  @include font-size(1.2);
+}
+
+#footer-nav{
+  font-size: 1.4em;
+  line-height: 2.25;
+  font-weight: bold;
+  text-transform: uppercase;
+  .menu{
+    text-align: center;
+  }
+  .stretchy{
+    display: none;
+  }
+  a{
+    text-decoration: none;
+  }
+  @include breakpoint($bp1){
+    $footer-nav-font-size: 1.1em;
+    font-size: $footer-nav-font-size;
+    .stretchy{
+      @include inline-block;
+    }
+    .menu{
+      text-align: justify;
+      -ms-text-justify: distribute-all-lines;
+      text-justify: distribute-all-lines;
+      height: $footer-nav-font-size*2; //This is a filthy hack. I'm sorry. But to distribute the text, the extra .stretchy span adds height I can't get rid of otherwise.
+    }
+    .level-1{
+      display: inline-block;
+      *display: inline;
+      zoom:1;
+      text-align: left;
+    }
+  }
+}
+
+/* =============================================================================
+   ~Form Elements
+   ========================================================================== */
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 0 0 5px;
+  font-size: 1.4em;
+  line-height: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border: 1px solid #000;
+  border-radius: 0;
+  @include transition((border linear 0.3s));
+  display: inline-block;
+  font-size: 1.4em;
+  padding: .5em;
+  @include box-sizing(border-box);
+  width: 100%;
+  @include breakpoint($bp1){
+    max-width: $bp1 - 150; //Kind of a magic number, but should be safe. Can't do much without fill to container CSS
+  }
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  @include box-shadow(inset, 0, 1px, 1px, rgba(0, 0, 0, 0.075));
+  border-color: #3091D2;
+  outline: 0;
+}
+
+input[type="submit"] {
+  border: none;
+  // @include box-shadow(inset, 0, 0px, 1px, #F6F6F6);
+  // padding: 8px 12px 9px;
+  // text-align: center;
+  // text-shadow: 0 1px 0 #333;
+  // min-width: 100px;
+}
+
+input[type="submit"]:hover {
+  // background: #dedadb;
+  // border: 1px solid #bbb;
+  // color: #333;
+  // text-shadow: 0 1px 0 white;
+}
+
+// .stretchy{
+//   display: none;
+//   @include breakpoint($bp1){
+//     display: inline-block;
+//   }
+// }
+
+input[type="text"]+input[type="submit"], .form-item-search-keys + input[type="submit"]{
+  width: 100%;
+  margin-top: .5em;
+  @include breakpoint($bp1){
+    width: auto;
+    margin-top: auto;
+  }
+}
+
+/* =============================================================================
+   ~Search Results
+   ========================================================================== */
+
+.search-results{
+  padding: 0;
+  .search-snippet{
+    line-height: 1.5;
+  }
+  .search-info{
+   font-size: 1.2em;
+  }
+  .title{
+    font-size: 1.5em;
+    text-transform: none;
+    font-family: Helvetica;
+    line-height: 1.2;
+  }
+  .search-snippet-info{
+    padding: 0;
+  }
+  >li{
+    margin-bottom: 2em;
+  }
+}
+
+#search-results-heading{
+  display: none;
+}
+
+.google-appliance-results-control-bar{
+  font-size: 1.2em;
+  border-radius: 0;
+}
+
+.google-appliance-synonyms{
+  display: none;
+}
+
+.form-submit{
+  @extend .wcmc-button;
+  display: inline-block;
+  line-height: 1.2;
+  padding: .4em 1em;
+}
+
+ul.pager{
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}

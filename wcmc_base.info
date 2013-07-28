@@ -1,0 +1,34 @@
+name = Weill Cornell Medical College Base Theme
+description = A base theme with the WCMC responsive navigation and header.
+screenshot = screenshot.png
+engine = phptemplate
+core = 7.x
+
+;-------------- R E G I O N S -------------
+
+regions[header]            = Header
+regions[content]           = Content
+regions[footer]            = Footer
+
+regions[page_top]          = Page top
+regions[page_bottom]       = Page bottom
+
+;-------------- C S S -------------
+
+stylesheets[all][] = css/normalize.css
+stylesheets[all][] = css/tabs.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = webfonts/ss-social-regular.css
+stylesheets[all][] = webfonts/ss-standard.css
+
+;-------------- J S -------------
+
+scripts[] = js/modernizr.custom.53035.js
+;scripts[] = js/script.js
+scripts[] = js/jquery.ba-throttle-debounce.min.js
+scripts[] = webfonts/ss-standard.js
+scripts[] = webfonts/ss-social.js
+
+;-------------- P A N E L S -------------
+
+plugins[panels][layouts] = layouts

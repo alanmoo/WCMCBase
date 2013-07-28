@@ -1,0 +1,348 @@
+//======Reference ===================
+$cornell-red: #B31B1B;
+
+//====Custom Site Colors=============
+//Change these first and see if the result makes sense with your design
+$primary-color: $cornell-red;
+$secondary-color: #4a5258;
+$tertiary-color: #727d84;
+$quadrary-color: #d8d2c9; //Horizontal rules, borders. Section separators
+$base-color: #fff; //Background of page mostly
+$text-color: #333539;
+$link-color: #0068ac; //Duh
+$button-color: #0093d0; //As stated, unless overridden by other styles
+$social-button-color: #89cce2; //Obvious
+
+//If once you've changed the above colors things still don't look right, customize these values
+$heading-colors: $primary-color;
+$desktop-site-name-color: $primary-color;
+$mobile-site-name-color: $tertiary-color;
+$secondary-content-header-color: #00355f; //Heading in sidebars
+$header-borders-color: #606a70;
+$third-level-nav-background-color: $base-color;
+$third-level-nav-inactive-color: $tertiary-color;
+$body-nav-background-color: $tertiary-color;
+$primary-nav-background-color: $secondary-color; //Background of main nav bar
+$secondary-nav-highlight-color: $tertiary-color; //Active primary/secondary nav
+$mobile-wcmc-text: #a5aeb4; //WCMC text at top of page in mobile
+
+//Images and logo colors
+//Tablet dropdown logo
+$header-wcmc-logo-color: "red"; // QUOTES ARE IMPORTANT- red, black, or white
+//Desktop circle emblem
+$header-wcmc-emblem-color: "red"; //QUOTES ARE IMPORTANT- red, black, or white
+
+//===========Measurements based on content=============
+$primary-nav-width: 25%; //Based on 4 primary nav items- change to your liking
+
+
+/* =============================================================================
+   ~Base Elements
+   ========================================================================== */
+  body{
+    //Global footer color only
+    background: $secondary-color;
+    color: $text-color;
+  }
+
+  #page{
+    background-color: $base-color;
+  }
+
+  h1, h2{
+    color: $heading-colors;
+  }
+
+  h3{
+    color: $secondary-content-header-color;
+  }
+  
+  #main h1{
+    border-bottom:  1px solid $quadrary-color;
+   }
+
+  a{
+    color: $link-color;
+    &:hover{
+      color: $link-color;
+      text-decoration: underline;
+    }
+  }
+
+
+/* =============================================================================
+   ~Header
+   ========================================================================== */
+
+.wcmc-branding{
+    border-color: $header-borders-color;
+    @include breakpoint($bp1){
+        background-color: $base-color;
+    }
+    @include breakpoint($bp2){
+        border: none;
+    }
+}
+
+.weill-cornell-connect{
+    background-color: $base-color;
+    border-color: $header-borders-color;
+    .is-collapsed &{
+        border-color: $header-borders-color;
+    }
+}
+
+.wcmc-emblem, .wcmc-emblem:hover{
+    color: $mobile-wcmc-text;
+    @include breakpoint($bp1 $bp2){
+      @include wcmc-logo($header-wcmc-logo-color);
+    }
+    @include breakpoint($bp2){
+        @include wcmc-emblem($header-wcmc-emblem-color);
+    }
+}
+.wcmc-emblem.full-logo{
+  @include breakpoint($bp1){
+    color: transparent;
+  }
+}
+.wcmc-links{
+  background: $base-color;
+  border-color: $header-borders-color;
+}
+
+.wcmc-primary-nav-item{
+  color: $secondary-nav-highlight-color;
+  &:hover{
+    color: $secondary-nav-highlight-color;
+  }
+  &:after{
+    border-color: $quadrary-color;
+  }
+}
+
+.wcmc-links-expander{
+    @include breakpoint($bp2){
+        @include retina-image('../images/sprites/navigation_drawer', 16px 100px, png);
+        background-repeat: no-repeat;
+    }
+}
+
+.global-search{
+  border-color: $header-borders-color;
+  select{
+    color: $header-borders-color;
+    border-color: $header-borders-color;
+  }
+  input{
+    border-color: $header-borders-color;
+  }
+  .search-button{
+    border-color: $header-borders-color;
+  }
+}
+
+.site-branding h1{
+  //font-family: "Franklin Gothic URW", "Franklin Gothic Medium", sans-serif;
+  margin-top: .5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  &, a{
+    color: $mobile-site-name-color;
+    @include breakpoint($bp1){
+      color: $desktop-site-name-color;
+    }
+  }
+}
+
+/* =============================================================================
+   ~Navigation
+   ========================================================================== */
+
+.menu-button{
+   color: $secondary-nav-highlight-color;
+   &.is-expanded{
+    background: $primary-nav-background-color;
+   }
+}
+
+#top-nav{
+    color: #fff;
+    background-color: $primary-nav-background-color;
+    @include breakpoint($bp1){
+      background-color: $base-color;
+    }
+}
+
+#primary-nav{
+  background-color: $primary-nav-background-color;
+  border-color: $secondary-nav-highlight-color;
+}
+
+#primary-nav .active-trail{
+  background: $secondary-nav-highlight-color;
+  &.temp-inactive{
+    background: transparent;
+  }
+}
+
+#primary-nav .level-1{
+  a{
+    color: #fff;
+  }
+  &.is-open{
+    background-color: $secondary-nav-highlight-color;
+    &:after{
+      border-top-color: $secondary-nav-highlight-color;
+    }
+  }
+  // border-color: $secondary-color;
+  width: $primary-nav-width; //Customize me based on content!
+}
+
+#drawer-nav{
+  // background-color: $primary-nav-background-color;
+    a{
+        color: white;
+        text-decoration: none;
+    }
+    .level-1{
+        border-color: $secondary-nav-highlight-color;
+        >.menu{
+          border-color: $secondary-nav-highlight-color;
+          background-color: $secondary-nav-highlight-color;
+          @include breakpoint($bp1){
+            background-color: $primary-nav-background-color;
+          }
+        }
+    }
+    .level-2{
+      @include breakpoint($bp1){
+        float: left;
+        width: 33%;
+      }
+      @include breakpoint($bp2){
+        width: 20%;
+      }
+
+    }
+    .level-3.active-trail{
+      background-color: $secondary-nav-highlight-color;
+    }
+    @include breakpoint($bp1){
+      background: $primary-nav-background-color;
+    }
+}
+
+#active-second-level-nav{
+  background: $secondary-nav-highlight-color;
+  .level-2{
+  }
+    a{
+        color: #fff;
+    }
+    .level-2:after{
+      border-color: $primary-nav-background-color;
+    }
+    @include breakpoint($bp1){
+      .active-trail>a{
+          @include retina-image('../images/sprites/double_arrow', 16px 20px, png);
+          background-size: 16px 20px;
+          background-repeat: no-repeat;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          background-position: 100% 50%;
+      }
+    }
+}
+
+#active-third-level-nav{
+  background: $third-level-nav-background-color;
+  border-color: $quadrary-color;
+  a{
+    color: $third-level-nav-inactive-color;
+  }
+  .active{
+    color: $cornell-red;
+    font-weight: bold;
+  }
+  .level-3.active-trail:before{
+    border-top-color: $secondary-nav-highlight-color;
+  }
+}
+
+#body-nav{
+    background: $body-nav-background-color;
+    color: $base-color;
+    li:after{
+      border-color: #fff transparent transparent transparent;
+    }
+    a{
+      color: $base-color;
+      text-decoration: none;
+    }
+}
+
+#mobile-sub-nav:after{
+  border-color: transparent transparent $base-color transparent;
+}
+
+#second-level-nav .wcmc-button{
+  background-color: $body-nav-background-color;
+  transition: background-color .25s;
+  &:hover{
+    color: white;
+    background-color: darken($body-nav-background-color, 5%);
+    text-decoration: none;
+  }
+}
+
+.breadcrumb {
+    color: $text-color;
+    .last a{
+
+    }
+}
+
+/* =============================================================================
+   ~Components
+   ========================================================================== */
+
+  .wcmc-button{
+    background-color: $button-color;
+    color: $base-color;
+    footer &{
+      background-color: $tertiary-color;
+    }
+  }
+  .wcmc-social-button{
+    background-color: $social-button-color;
+  }
+  .wcmc-social-button-facebook{
+    color: $social-button-color;
+  }
+
+  .social-media{
+    border-color: $quadrary-color;
+  }
+/* =============================================================================
+   ~Footer
+   ========================================================================== */
+//The color of the footer is actually the body tag background color.
+body{
+}
+footer{
+  background-color: $primary-nav-background-color;
+  color: $base-color;
+}
+
+.footer-primary-nav{
+  border-color: $tertiary-color;
+}
+#footer-nav a{
+  color: $base-color;
+}
+
+.disclaimer, .disclaimer a{
+  color: $base-color;
+}

@@ -1,0 +1,102 @@
+/**
+ *
+ * Base elements styles
+ *
+ */
+
+/* =============================================================================
+   ~Utilities
+   ========================================================================== */
+
+html {
+  font-size: 62.5%; /* Sets up the Base 10 Type for easier math */
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+	width: 100%;
+  // max-width: 960px;
+  margin: 0 auto;
+	@include clearfix();
+}
+
+p:first-child{
+  margin-top: 0;
+}
+
+.ie8 img{
+  width: inherit;
+}
+
+.main-content p a[href^="http"]:after{
+  content:'redirect';
+  font-family: "SSStandard";
+  font-size: 75%;
+  vertical-align: top;
+  text-rendering: optimizeLegibility;
+  display: inline-block;
+  text-decoration: none;
+}
+
+#related-content-sidebar, #related-content-inline{
+  p a[href^="http"]:after{
+    display: none;
+  }
+}
+
+/* =============================================================================
+   ~Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "adelle",serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+h1{
+  font-size: 3em;
+  font-family: "Adelle", serif; /*todo*/
+  padding-bottom: .25em;
+  line-height: 1.25;
+}
+
+h3{
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 .75em;
+  font-size: 1.8em;
+  @include breakpoint($bp1){
+    font-size: 1.4em;
+  }
+}
+
+a {
+  color: #607890;
+  text-decoration: none;
+  transition: color .25s;
+}
+
+a:hover {
+  color: #333;
+}
+
+p{
+  font-size: 1.7em;
+  line-height: 1.41;
+  margin-bottom: 1.5em;
+  padding: 0;
+  @include breakpoint($bp1){
+    font-size: 1.5em;
+    line-height: 1.333;
+    margin-bottom: 1.333em;
+  }
+}
+
+figcaption{
+  font-size: 1.4em;
+  line-height: 1.25;
+  @include breakpoint($bp1){
+    font-size: 1.2em;
+  }
+}

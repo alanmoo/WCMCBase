@@ -1,0 +1,61 @@
+.footer-nav-link{
+  width: 25%;
+  float: left;
+  text-align: center;
+  @include box-sizingIEtoo(border-box);
+}
+.footer-primary-nav{
+  @extend .clearfix;
+  padding-bottom: 1em;
+  border-bottom: 1px solid;
+}
+
+footer{
+  clear: both;
+  padding: 1em $mobile-page-padding;
+  .department{
+    float: left;
+    margin: 1em 0;
+    display: none;
+
+    @include breakpoint($bp1){
+      display: block;
+    }
+  }
+  .contact{
+    display: none;
+  }
+  .footer-site{
+    @extend .clearfix;
+    @include breakpoint($bp1){
+      margin-bottom: .6em;
+    }
+  }
+  .site-name{
+    font-size: 1.5em;
+    @include breakpoint($bp1){
+      font-size: 2em;
+    }
+  }
+  .location{
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+  .contact{
+    @include breakpoint ($bp2){
+      float: right;
+      text-align: right;
+    }
+  }
+  .disclaimer{
+    font-size: 1.4em;
+    line-height: 1.4;
+    @include breakpoint ($bp1){
+    max-width: 45%;
+    float: right;
+    margin-top: 30px;
+    text-align: right;
+    font-size: 1.1em;
+  }
+  }
+}

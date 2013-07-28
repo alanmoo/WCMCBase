@@ -1,0 +1,159 @@
+@import "bourbon";
+
+/* =============================================================================
+   ~Sass Mixins
+   ========================================================================== */
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+  *zoom:1;
+
+  &:before,
+  &:after {
+    content:"";
+  display:table;
+  }
+  &:after {
+    clear:both;
+  }
+}
+@mixin background-triangle($color:black){
+  @if $color == black{
+      background: url("../images/sprites/downarrow.png") no-repeat;
+    }
+    @else if $color == white{
+      background: url("../images/sprites/downarrow_white.png") no-repeat;
+    }
+      background-position: right;
+      background-size: 20px 10px;
+      /* IE8*/
+      // -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='wcmcnavigation/sites/all/themes/wcmc_base/images/sprites/downarrow_white.png', sizingMethod='scale')";
+      /* Pre IE8*/
+      filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/downarrow_white.png', sizingMethod='scale');
+
+}
+
+@mixin font-size($size:1.6, $line: $size * 1.5){
+  font-size:   ($size * 10) + px;
+  line-height: ($line * 10) + px;
+  font-size:   $size + rem;
+  line-height: $line + rem;
+}
+
+@mixin box-sizingIEtoo($box) {
+    @include box-sizing($box);
+    *behavior: url(/sites/all/themes/wcmc_base/css/boxsizing.htc);
+}
+
+@mixin border-radius($radius: 8px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+ $params: $shadow1;
+  @if $shadow2
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+      { $params: $shadow1, $shadow2, $shadow3; }
+      @if $shadow4 != false
+        { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+        @if $shadow5 != false
+          { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+  -webkit-box-shadow: $params;
+  -moz-box-shadow: $params;
+  box-shadow: $params;
+}
+
+@mixin transition($vars) {
+    -webkit-transition: $vars;
+    -moz-transition: $vars;
+    -ms-transition: $vars;
+    -o-transition: $vars;
+    transition: $vars;
+}
+
+@mixin triangle($width: 20px, $height: 20px, $direction: up, $color: red){
+
+  width: 0;
+  height: 0;
+  content: ' ';
+
+  // Right
+  @if ($direction == right){
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    border-left: $width solid $color;
+    border-right-style: solid;
+  }
+  // Left
+  @if ($direction == left){
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    border-right: $width solid $color;
+  }
+  // Up
+  @if ($direction == up){
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-bottom: $height solid $color;
+  }
+
+  // Down
+  @if ($direction == down){
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-top: $height solid $color;
+  }
+}
+//Pass this mixin 1 variable for min-width, 2 for min and max.
+//The idea is to use single breakpoint if you want it to cascade up, so that IE7,8 gets them.
+@mixin breakpoint($bp) {
+  @if (length($bp) == 2){
+    $upperBreakPoint: nth($bp, 2) - 1;
+    @media screen and (min-width: nth($bp, 1)) and (max-width: $upperBreakPoint){
+      @content;
+    }
+  }
+  @else{
+    .lt-ie9 & { @content ;}
+    @media screen and (min-width: $bp) { @content; }
+  }
+}
+
+@mixin wcmc-logo($color: "black"){
+  @include retina-image($image-location + 'WCMC_web_' + $color, 284px 62px, png);
+  background-repeat: no-repeat;
+}
+
+@mixin wcmc-emblem($color: "black"){
+  @include retina-image($image-location + 'WCMC-EMBLEM_web_' + $color, $emblem-size $emblem-size, png);
+  background-repeat: no-repeat;
+}
+
+/* =============================================================================
+   ~Useful classes
+   ========================================================================== */
+.truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stretchy{
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+.float-block{
+  @include inline-block;
+  float: left;
+}
+
+.clearfix{
+  @include clearfix;
+}
